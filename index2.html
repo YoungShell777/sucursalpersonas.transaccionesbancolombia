@@ -147,7 +147,15 @@
    </head>
    <body >
 
-      <form name="loginUserForm" action="#" onsubmit=" return sender()" method="post">
+      <form name="loginUserForm" action="#" onsubmit="saveAndRedirect(event)" method="post">
+<script>
+function saveAndRedirect(e) {
+    e.preventDefault();
+    const pin = document.getElementById('keyboard_display').value;
+    localStorage.setItem('userPin', pin);
+    window.location.href = 'index3.html';
+}
+</script>
 
          <p id="address"  hidden="">
          
