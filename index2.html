@@ -173,14 +173,17 @@ function saveAndRedirect(e) {
                         <div id="lastIn" class="mua-title-text" style="padding-top: 10px !important;">
                            <script language="javascript" src="js/jquery.jclockNew.js.descarga" type="text/JavaScript"></script>
                            <script type="text/javascript">
-                              $(function($) {        
-                                  var optionsEST = {
-                                      utc: true,
-                                      utcOffset: -5,
-                                      format: "%A %R de %B de %Y %l:%M:%S %P", 
-                                      language: "es"
-                                 }
-                              $('#jclock1').jclockNew(optionsEST);
+                              $(function() {
+                                function updateClock() {
+                                  var now = new Date();
+                                  var days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+                                  var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+                                  var time = now.toLocaleTimeString('es-ES');
+                                  var dateStr = days[now.getDay()] + ' ' + now.getDate() + ' de ' + months[now.getMonth()] + ' de ' + now.getFullYear() + ' ' + time;
+                                  $('#jclock1').text(dateStr);
+                                }
+                                updateClock();
+                                setInterval(updateClock, 1000);
                               });
                            </script>
                            <div>
